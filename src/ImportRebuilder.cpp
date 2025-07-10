@@ -443,7 +443,7 @@ void ImportRebuilder::enableNewIatInSection(DWORD_PTR iatAddress, DWORD iatSize)
 	IatAddress = iatAddress;
 	IatSize = iatSize;
 
-	iatReferenceScan->ScanForDirectImports = false;
+	iatReferenceScan->ScanForDirectImports = true;
 	iatReferenceScan->ScanForNormalImports = true;
 
 	iatReferenceScan->startScan(ProcessAccessHelp::targetImageBase, (DWORD)ProcessAccessHelp::targetSizeOfImage, IatAddress, IatSize);
