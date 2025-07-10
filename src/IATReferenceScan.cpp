@@ -508,6 +508,15 @@ void IATReferenceScan::findDirectIatReferenceMov( _DInst * instruction )
 
 				checkMemoryRangeAndAddToList(&ref, instruction);
 			}
+			// Handle MOV r32, [imm32]
+			else if (instruction->ops[0].type == O_REG && instruction->ops[1].type == O_DISP)
+			{
+				if (!ProcessAccessHelp::readMemoryFromProcess((DWORD_PTR)instruction->disp, sizeof(DWORD_PTR), &ref.targetAddressInIat))
+				{
+					return;
+				}
+				checkMemoryRangeAndAddToList(&ref, instruction);
+			}
 		}
 	}
 }
@@ -744,5 +753,3 @@ DWORD IATReferenceScan::addAdditionalApisToList()
 
 	return newIatSize;
 }
-
-
