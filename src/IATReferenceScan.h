@@ -38,7 +38,7 @@ public:
 		ImageBase = 0;
 		ImageSize = 0;
 		iatBackup = 0;
-		ScanForDirectImports = false;
+		ScanForDirectImports = true;
 		ScanForNormalImports = true;
 	}
 
